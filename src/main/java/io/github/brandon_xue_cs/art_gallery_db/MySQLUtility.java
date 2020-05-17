@@ -15,6 +15,14 @@ import java.sql.SQLException;
 import java.sql.SQLTimeoutException;
 
 public class MySQLUtility {
+    private static final String
+    LOCAL_CONNECTION =
+    "jdbc:mysql://localhost/ART_GALLERY?serverTimezone=America/Los_Angeles",
+    LOCAL_USERNAME = "test_user", LOCAL_PASSWORD = "test_password",
+
+    HEROKU_CONNECTION = "jdbc:mysql://us-cdbr-east-06.cleardb.net/heroku_e6d14340dd11c07?reconnect=true",
+    HEROKU_USERNAME = "b51d5de014d7d1", HEROKU_PASSWORD = "4a90cdf9";
+
 
     public MySQLUtility() {}
 
@@ -22,7 +30,7 @@ public class MySQLUtility {
         // Establish a connection with the database
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/ART_GALLERY?serverTimezone=America/Los_Angeles", "test_user", "test_password");
+            conn = DriverManager.getConnection(HEROKU_CONNECTION, HEROKU_USERNAME, HEROKU_PASSWORD);
         } catch (SQLException e) {
             System.out.println("Connection error:");
             System.out.println(e.toString());
