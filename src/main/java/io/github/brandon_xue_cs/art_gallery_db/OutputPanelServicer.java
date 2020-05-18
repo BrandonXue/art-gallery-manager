@@ -52,6 +52,7 @@ public class OutputPanelServicer {
                 tableModels[modelToUpdate] = new DefaultTableModel(dataVector, columnIdentifiers);
     
             } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
                 System.out.println("Error updating table");
             }
         }
