@@ -1,8 +1,6 @@
-package io.github.brandon_xue_cs.art_gallery_db;
+package com.github.brandonxue.art_gallery_manager;
 
 import javax.swing.JTabbedPane;
-
-import io.github.brandon_xue_cs.art_gallery_db.OutputPanelServicer;
 
 @SuppressWarnings("serial")
 public class PanelSwitcher extends JTabbedPane {

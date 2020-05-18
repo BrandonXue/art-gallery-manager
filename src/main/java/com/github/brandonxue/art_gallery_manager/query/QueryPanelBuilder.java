@@ -1,9 +1,11 @@
-package io.github.brandon_xue_cs.art_gallery_db;
+package com.github.brandonxue.art_gallery_manager;
 
 import java.awt.Container;
+
+import javax.swing.BoxLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.BoxLayout;
 import javax.swing.JTabbedPane;
 
 @SuppressWarnings("serial")

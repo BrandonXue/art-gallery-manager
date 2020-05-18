@@ -1,4 +1,4 @@
-package io.github.brandon_xue_cs.art_gallery_db;
+package com.github.brandonxue.art_gallery_manager;
 
 import static org.junit.Assert.assertTrue;
 

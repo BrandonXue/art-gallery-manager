@@ -1,24 +1,18 @@
-package io.github.brandon_xue_cs.art_gallery_db;
+package com.github.brandonxue.art_gallery_manager;
 
 import java.awt.EventQueue;
 
-import javax.sql.rowset.CachedRowSet;
+import java.lang.InterruptedException;
+
 import java.sql.SQLException;
 
 import java.util.concurrent.ExecutionException;
 
-import java.lang.InterruptedException;
-
+import javax.sql.rowset.CachedRowSet;
 
 import javax.swing.DefaultButtonModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingWorker.StateValue;
-
-import io.github.brandon_xue_cs.art_gallery_db.MySQLUtility;
-import io.github.brandon_xue_cs.art_gallery_db.OutputPanelServicer;
-import io.github.brandon_xue_cs.art_gallery_db.SimpleBroadcaster;
-import io.github.brandon_xue_cs.art_gallery_db.SimpleListener;
-import javafx.event.Event;
 
 @SuppressWarnings("serial")
 public class FormPanelServicer {

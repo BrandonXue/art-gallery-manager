@@ -1,11 +1,13 @@
-package io.github.brandon_xue_cs.art_gallery_db;
+package com.github.brandonxue.art_gallery_manager;
 
-import javax.swing.table.DefaultTableModel;
 import java.util.Vector;
 
-import javax.sql.rowset.CachedRowSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+
+import javax.swing.table.DefaultTableModel;
+
+import javax.sql.rowset.CachedRowSet;
 
 @SuppressWarnings("serial")
 public class OutputPanelServicer {

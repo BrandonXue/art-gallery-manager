@@ -1,19 +1,15 @@
-package io.github.brandon_xue_cs.art_gallery_db;
+package com.github.brandonxue.art_gallery_manager;
 
 import java.lang.InterruptedException;
 
-import javax.sql.rowset.CachedRowSet;
-import javax.swing.SwingWorker.StateValue;
+import java.util.concurrent.ExecutionException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.concurrent.ExecutionException;
 
+import javax.sql.rowset.CachedRowSet;
 
-import io.github.brandon_xue_cs.art_gallery_db.MySQLUtility;
-import io.github.brandon_xue_cs.art_gallery_db.OutputPanelServicer;
-import io.github.brandon_xue_cs.art_gallery_db.SimpleBroadcaster;
-import io.github.brandon_xue_cs.art_gallery_db.SimpleListener;
+import javax.swing.SwingWorker.StateValue;
 
 @SuppressWarnings("serial")
 public class CustomPanelServicer {

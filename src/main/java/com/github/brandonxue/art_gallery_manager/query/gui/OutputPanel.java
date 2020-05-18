@@ -1,14 +1,12 @@
-package io.github.brandon_xue_cs.art_gallery_db;
-
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.plaf.DimensionUIResource;
-import javax.swing.table.DefaultTableModel;
+package com.github.brandonxue.art_gallery_manager;
 
 import java.awt.event.ActionListener;
 
-import java.util.Observer;
-import java.util.Observable;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+import javax.swing.plaf.DimensionUIResource;
+import javax.swing.table.DefaultTableModel;
 
 @SuppressWarnings("serial")
 public class OutputPanel extends JScrollPane {

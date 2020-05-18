@@ -1,21 +1,23 @@
-package io.github.brandon_xue_cs.art_gallery_db;
+package com.github.brandonxue.art_gallery_manager;
 
-import java.sql.Statement;
 import java.util.Vector;
+
 import java.util.concurrent.ExecutionException;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSetMetaData;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.SQLException;
+import java.sql.SQLTimeoutException;
 
 import javax.sql.RowSetMetaData;
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
+
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
-
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.SQLTimeoutException;
 
 public class MySQLUtility extends SwingWorker<CachedRowSet, Void> {
     /*

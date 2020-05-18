@@ -1,4 +1,4 @@
-package io.github.brandon_xue_cs.art_gallery_db;
+package com.github.brandonxue.art_gallery_manager;
 
 public interface SimpleListener {
     public abstract void update(Object... messages);
