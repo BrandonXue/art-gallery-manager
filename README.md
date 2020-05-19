@@ -1,7 +1,10 @@
 ## Summary
 
-A database project using MySQL and dynamic SQL in Java through Connector/J. (This is the main project--a continuation of the "art-gallery-db" project.)
+A desktop application used to query a database for art gallery data such as art shows, artists, and artwork. This project is written in Java using Swing to create the user interfaces. It connects to a MySQL database using the Connector/J API. The database is hosted by ClearDB's services, and was set up through Heroku. Source code for setting up the database is also included.
 
-The purpose of this database is to store art gallery information such as artists, art shows, and artworks.
+This project builds with Maven. Please see pom.xml for dependencies and version numbers. 
 
-This project builds with Maven. Please see pom.xml for dependencies and version numbers.
+If you would like to test the project, feel free to download the jar file inside the "target" directory.
+
+## Demo Screenshots
+
