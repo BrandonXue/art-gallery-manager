@@ -2,6 +2,17 @@ INSERT INTO Artist VALUE (NULL, 'Leonardo', 'D', 'da Vinci', '1452-01-14', '(919
 INSERT INTO Artist VALUE (NULL, 'Pablo', 'P', 'Picasso', '1881-10-25', '(714)-555-0101', 'Mougins', NULL, 'FRA');
 INSERT INTO Artist VALUE (NULL, 'Vincent', 'W', 'van Gogh', '1853-03-30', '(714)-555-0102', 'Zundert', 'North Brabant', 'NLD');
 INSERT INTO Artist VALUE (NULL, 'Michelangelo', NULL, 'di Lodovico', '1475-03-06', '(718)-555-0103', 'Caprese Michelangelo', 'Tuscany', 'ITA');
+INSERT INTO Artist VALUE (NULL, 'Xiaodong', NULL, 'Liu', '1963-11-17', '(912)-555-0112', 'Jincheng', 'Shanxi', 'CHN');
+INSERT INTO Artist VALUE (NULL, 'Louise', 'J', 'Bourgeois', '1911-12-25', '(828)-555-0113', 'Paris', 'Paris', 'FRA');
+INSERT INTO Artist VALUE (NULL, 'Tracy', NULL, 'Emin', '1963-07-03', '(312)-555-0114', 'Croydon', 'Surrey', 'GBR');
+INSERT INTO Artist VALUE (NULL, 'Yayoi', 'J', 'Kusama', '1929-03-22', '(183)-555-0115', 'Matsumoto', 'Nagano', 'JPN');
+INSERT INTO Artist VALUE (NULL, 'Jean-Michel', NULL, 'Basquiat', '1960-08-12', '(418)-555-0116', 'New York City', 'New York', 'USA');
+INSERT INTO Artist VALUE (NULL, 'Damien', 'S', 'Hirst', '1965-06-07', '(734)-555-0117', 'Bristol', 'Avon', 'GBR');
+INSERT INTO Artist VALUE (NULL, 'Anselm', NULL, 'Kiefer', '1945-03-08', '(429)-555-0118', 'Donaueschingen', 'Baden-Wurttemberg', 'DEU');
+INSERT INTO Artist VALUE (NULL, 'Weiwei', NULL, 'Ai', '1957-08-28', '(128)-555-0119', 'Beijing', 'Hebei', 'CHN');
+INSERT INTO Artist VALUE (NULL, 'Kara', 'E', 'Walker', '1969-11-26', '(931)-555-0120', 'Stockton', 'California', 'USA');
+INSERT INTO Artist VALUE (NULL, 'Carmen', NULL, 'Herrera', '1915-05-30', '(184)-555-0121', 'Havana', 'La Habana', 'CUB');
+INSERT INTO Artist VALUE (NULL, 'Kerry', 'J', 'Marshall', '1955-10-17', '(314)-555-0122', 'Birmingham', 'Alabama', 'USA');
 
 INSERT INTO Address VALUE ((SELECT	id
 							FROM 	Artist
@@ -19,11 +30,32 @@ INSERT INTO Address VALUE ((SELECT	id
 							FROM	Artist
 							WHERE	first_name = 'Michelangelo' AND last_name = 'di Lodovico'),
 							'APT 555', '6865 Mason Ave', 'Irvine', 'California', 'USA', '92618');
+INSERT INTO Address VALUE ((SELECT	id
+							FROM	Artist
+							WHERE	first_name = 'Xiaodong' AND last_name = 'Liu'),
+							'APT 5318', '6865 Renmin Lu', 'Beijing', 'Hebei', 'CHN', '103938');
+INSERT INTO Address VALUE ((SELECT	id
+							FROM	Artist
+							WHERE	first_name = 'Louise' AND last_name = 'Bourgeois'),
+							'APT 128', '15 Grande Rue', 'Paris', 'Paris', 'FRA', '713948');
+INSERT INTO Address VALUE ((SELECT	id
+							FROM	Artist
+							WHERE	first_name = 'Tracy' AND last_name = 'Emin'),
+							'APT 1394', '941 Some Place', 'Croydon', 'Surrey', 'GBR', '123487');
+INSERT INTO Address VALUE ((SELECT	id
+							FROM	Artist
+							WHERE	first_name = 'Carmen' AND last_name = 'Herrera'),
+							'PO Box 139', '2478 Right Ln', 'Havana', 'La Habana', 'CUB', '45913');
 
 INSERT INTO Venue VALUE (NULL, 'Village Gallery At Spectrum', NULL, '510 Spectrum Center Dr', 'Irvine', 'California', 'USA', '92618');
 INSERT INTO Venue VALUE (NULL, 'L.A. Louver', NULL, '45 N Venice Blvd', 'Los Angeles', 'California', 'USA', '90291');
 INSERT INTO Venue VALUE (NULL, 'William Turner Gallery', NULL, '2525 Michigan Ave', 'Santa Monica', 'California', 'USA', '90404');
 INSERT INTO Venue VALUE (NULL, 'Altitude Gallery', NULL, '134 E Main St', 'Bozeman', 'Montana', 'USA', '59715');
+INSERT INTO Venue VALUE (NULL, 'The Art Box', NULL, '95 E Bennington Rd', 'Santa Ana', 'California', 'USA', '99715');
+INSERT INTO Venue VALUE (NULL, 'Cavalier', NULL, '319 Crenshaw Blvd', 'Los Angeles', 'California', 'USA', '95384');
+INSERT INTO Venue VALUE (NULL, 'Contemporary Canvas', NULL, '84 N Industry', 'Sacramento', 'California', 'USA', '91453');
+INSERT INTO Venue VALUE (NULL, 'J. Goddard Gallery', NULL, '145 S Smithson Dr', 'Jackson', 'Wyoming', 'USA', '38715');
+INSERT INTO Venue VALUE (NULL, 'Wisteria Mae Gallery', NULL, '318 N Adelaide Rd', 'Augusta', 'Maine', 'USA', '48715');
 
 INSERT INTO Artshow VALUE (NULL, 'The da Vinci Code', '2020-04-30 17:45:00',
 							(SELECT	id
