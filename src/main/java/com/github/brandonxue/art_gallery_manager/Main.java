@@ -21,10 +21,10 @@ public class Main {
         Runnable r = () -> { // Swing components are not thread safe and must be run on the Event Dispatch Thread
             JFrame frame = new JFrame("Art Gallery Manager");
             frame.add(QueryPanelBuilder.buildQueryPanel());
-            frame.setLocationRelativeTo(null);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
-            System.out.println(frame.getSize().toString());
+            //System.out.println(frame.getSize().toString());
         };
         EventQueue.invokeLater(r);
     }
