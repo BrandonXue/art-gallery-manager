@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import com.github.brandonxue.art_gallery_manager.query.*;
+
 @SuppressWarnings("serial")
 public class Main {
     public static void main(String args[]) {
@@ -16,13 +18,14 @@ public class Main {
             return;
         }
 
-        Runnable r = () -> {
+        Runnable r = () -> { // Swing components are not thread safe and must be run on the Event Dispatch Thread
             JFrame frame = new JFrame("Art Gallery Manager");
             frame.add(QueryPanelBuilder.buildQueryPanel());
             frame.setLocationRelativeTo(null);
             frame.pack();
             frame.setVisible(true);
-        }; // See lambda functions and functional interfaces Java 8
+            System.out.println(frame.getSize().toString());
+        };
         EventQueue.invokeLater(r);
     }
 }

@@ -1,4 +1,4 @@
-package com.github.brandonxue.art_gallery_manager;
+package com.github.brandonxue.art_gallery_manager.query;
 
 import java.awt.event.ActionListener;
 
@@ -12,8 +12,6 @@ import javax.swing.table.DefaultTableModel;
 public class OutputPanel extends JScrollPane {
     private JTable tableView;
 
-    OutputPanelServicer servicer;
-
     public OutputPanel() {
         setPreferredSize(new DimensionUIResource(700, 400));
 
@@ -23,11 +21,17 @@ public class OutputPanel extends JScrollPane {
         setViewportView(tableView);
     }
 
+    /**
+     * Link this JScrollPane with its logical counterpart so that it can be pushed with view updates.
+     * @param s the OutputPanelServicer that will function as this Pane's logical component
+     */
     public void setServicer(OutputPanelServicer s) {
-        servicer = s;
+        // Use a listener so check for updates to the view
         s.addModelUpdateListener(msgs -> {
             tableView.setModel((DefaultTableModel)msgs[0]);
         });
-    }
-    
+
+        // Send a reference of the JTable so the servicer can manipulate its size
+        s.setTableReference(tableView);
+    } 
 }

@@ -1,4 +1,4 @@
-package com.github.brandonxue.art_gallery_manager;
+package com.github.brandonxue.art_gallery_manager.query;
 
 import java.awt.Container;
 
@@ -8,12 +8,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import com.github.brandonxue.art_gallery_manager.query.*;
+
 @SuppressWarnings("serial")
 public class QueryPanelBuilder {
     private static final int NUM_PANELS = 2;
 
     public QueryPanelBuilder(){}
 
+    /**
+     * Builds the JPanel involved in querying the database and displaying outputs to a table. GUI and logical components must be constructed and connected in the correct order.
+     * @return a properly built JPanel with querying and output displaying capabilities.
+     */
     public static JPanel buildQueryPanel() {
         JPanel queryPanel = new JPanel();
         queryPanel.setLayout(new BoxLayout(queryPanel, BoxLayout.Y_AXIS));
@@ -27,7 +33,7 @@ public class QueryPanelBuilder {
         formPanel.setServicer(formPanelServicer);
         CustomPanelServicer customPanelServicer = new CustomPanelServicer();
         customPanel.setServicer(customPanelServicer);
-        OutputPanelServicer outputPanelServicer = new OutputPanelServicer(2);
+        OutputPanelServicer outputPanelServicer = new OutputPanelServicer(2); // 2 Panels
         outputPanel.setServicer(outputPanelServicer);
 
         formPanelServicer.addOutputPanelServicer(outputPanelServicer);
@@ -39,8 +45,6 @@ public class QueryPanelBuilder {
 
         queryPanel.add(tabbedPane);
         queryPanel.add(outputPanel);
-
-        //OutputPanelServicer = new OutputPanelServicer(NUM_PANELS);
 
         return queryPanel;
     }

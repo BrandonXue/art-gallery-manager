@@ -1,4 +1,4 @@
-package com.github.brandonxue.art_gallery_manager;
+package com.github.brandonxue.art_gallery_manager.query;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -18,6 +18,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import javax.swing.plaf.DimensionUIResource;
+
+import com.github.brandonxue.art_gallery_manager.event.*;
+import com.github.brandonxue.art_gallery_manager.util.*;
 
 @SuppressWarnings("serial")
 public class FormPanel extends JPanel {
@@ -39,16 +42,9 @@ public class FormPanel extends JPanel {
         buildQueryButton();
     }
 
-    public void setServicer(FormPanelServicer s) {
-        servicer = s;
-        // Add listeners for own inputs
-        addActionListeners();
-        // Add listener for updating own view
-        s.addTableComboBoxListener(msg -> tableSelector.setModel((DefaultComboBoxModel)msg[0]));
-        s.addAttributeComboBoxListener1(msg -> searchAttributeSelector.setModel((DefaultComboBoxModel)msg[0]));
-        s.addAttributeComboBoxListener2(msg -> orderingAttributeSelector.setModel((DefaultComboBoxModel)msg[0]));
-    }
-
+    /**
+     * Build GUI components related to selecting tables (relations).
+     */
     private void buildTableSelectionComponents() {
         // Build the label, combobox, and button for the table selector
         JLabel selectTableLabel = new JLabel("Select Table");
@@ -61,6 +57,9 @@ public class FormPanel extends JPanel {
         add(tableSelector, c);
     }
 
+    /**
+     * Build GUI components related to searching by columns (attributes).
+     */
     private void buildSearchComponents() {
         JLabel searchByLabel = new JLabel("Search By Attribute (Optional)");
         GridBagConstraints c = new GridBagCBuilder(0, 2).sAnchor(GridBagConstraints.WEST).sInsets(20, 0, 0, 0);
@@ -77,6 +76,9 @@ public class FormPanel extends JPanel {
         add(searchEntryField, c);
     }
 
+    /**
+     * Build GUI components related to ordering the result set.
+     */
     private void buildOrderingComponents() {
         // Add the label for the orderBySelector
         JLabel orderByLabel = new JLabel("Order By Attribute (Optional)");
@@ -89,7 +91,7 @@ public class FormPanel extends JPanel {
         c = new GridBagCBuilder(0, 6, 2).sAnchor(GridBagConstraints.WEST);
         add(orderingAttributeSelector, c);
 
-        // Add radio buttons for choosing sorting order
+        // Add radio buttons for choosing sorting order.
         orderAscending = new JRadioButton("ascending");
         orderAscending.setSelected(true);
         c = new GridBagCBuilder(0, 7).sAnchor(GridBagConstraints.WEST);
@@ -104,13 +106,19 @@ public class FormPanel extends JPanel {
         orderButtons.add(orderDescending);
     }
 
+    /**
+     * Build the JButton used to submit the MySQL query.
+     */
     private void buildQueryButton() {
         queryButton = new JButton("Submit Query");
         GridBagConstraints c = new GridBagCBuilder(0, 8, 2).sInsets(20, 0, 0, 0);
         add(queryButton, c);
     }
 
-    private void addActionListeners() {
+    /**
+     * Add Listeners so that FormPanel's inputs can be connected to the servicer. Servicer must be set prior to this method being called.
+     */
+    private void addListeners() {
         tableSelector.addActionListener(e -> {
             servicer.setSelectedTable((String)tableSelector.getSelectedItem());
         });
@@ -142,5 +150,19 @@ public class FormPanel extends JPanel {
         orderDescending.addActionListener(e -> {servicer.setOrdering(false);});
     
         queryButton.addActionListener(e -> {servicer.requestQuery();});
+    }
+
+    /**
+     * Link this JPanel with its logical counterpart so that it can be pushed with view updates, and so that inputs from the user can be forwarded to the servicer. The servicer allows this class to focus solely on defining the layout of the GUI and setting up the communication.
+     * @param s the FormPanelServicer that will function as this Pane's logical component
+     */
+    public void setServicer(FormPanelServicer s) {
+        servicer = s;
+        // Add listeners for own inputs to be connected to the servicer
+        addListeners();
+        // Add listeners for updating own view when servicer broadcasts updates
+        s.addTableComboBoxListener(msg -> tableSelector.setModel((DefaultComboBoxModel)msg[0]));
+        s.addAttributeComboBoxListener1(msg -> searchAttributeSelector.setModel((DefaultComboBoxModel)msg[0]));
+        s.addAttributeComboBoxListener2(msg -> orderingAttributeSelector.setModel((DefaultComboBoxModel)msg[0]));
     }
 }

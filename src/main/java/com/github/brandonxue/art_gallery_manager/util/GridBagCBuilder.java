@@ -1,4 +1,4 @@
-package com.github.brandonxue.art_gallery_manager;
+package com.github.brandonxue.art_gallery_manager.util;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -6,7 +6,7 @@ import java.awt.Insets;
 import javax.swing.plaf.InsetsUIResource;
 
 @SuppressWarnings("serial")
-class GridBagCBuilder extends GridBagConstraints {
+public class GridBagCBuilder extends GridBagConstraints {
     public GridBagCBuilder() {}
 
     /**

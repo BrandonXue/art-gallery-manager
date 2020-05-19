@@ -1,4 +1,4 @@
-package com.github.brandonxue.art_gallery_manager;
+package com.github.brandonxue.art_gallery_manager.event;
 
 import java.util.Vector;
 

@@ -1,4 +1,4 @@
-package com.github.brandonxue.art_gallery_manager;
+package com.github.brandonxue.art_gallery_manager.query;
 
 import java.awt.EventQueue;
 
@@ -13,6 +13,9 @@ import javax.sql.rowset.CachedRowSet;
 import javax.swing.DefaultButtonModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingWorker.StateValue;
+
+import com.github.brandonxue.art_gallery_manager.event.*;
+import com.github.brandonxue.art_gallery_manager.util.*;
 
 @SuppressWarnings("serial")
 public class FormPanelServicer {
@@ -45,9 +48,7 @@ public class FormPanelServicer {
     }
 
     /**
-     * Called once to initially populate the tableSelector with tables from the database.
-     * Uses a SQLUtility to spawn a SwingWorker for query. When results arrive, this method calls
-     * updateArrivedTableSelectorComboBox.
+     * Called once to initially populate the tableSelector with tables from the database. Uses a SQLUtility to spawn a SwingWorker for query. When results arrive, this method calls updateArrivedTableSelectorComboBox.
      */
     private void initTableSelectorComboBox() {
         MySQLUtility workerUtility = new MySQLUtility("SHOW TABLES"); // Use a SwingWorker
@@ -82,8 +83,7 @@ public class FormPanelServicer {
     }
 
     /**
-     * Triggered when selectedTable changes. Attempts to find the elements that the combobox should
-     * be repopulated with.
+     * Triggered when selectedTable changes. Attempts to find the elements that the combobox should be repopulated with.
      * @param selected the name of the table that is selected.
      */
     private void updateAttributeSelectorComboBox() {
@@ -97,7 +97,6 @@ public class FormPanelServicer {
         workerUtility.addPropertyChangeListener(e -> {
             if (e.getNewValue() == StateValue.DONE) {  
                 try {
-                    System.out.println("triggered");
                     updateArrivedAttributeSelectorComboBox(workerUtility.get());
                 } catch (InterruptedException intrpEx) {}
                 catch (ExecutionException execEx) {}
@@ -132,24 +131,41 @@ public class FormPanelServicer {
         broadcaster3.broadcast(attributeSelector2);
     }
 
+    /**
+     * Receives an input which changes the element that is currently selected in tableSelector.
+     * @param selected the element that is now selected, as a String.
+     */
     public void setSelectedTable(String selected) {
         selectedTable = selected;
         updateAttributeSelectorComboBox();
     }
 
+    /**
+     * Receives an input which changes the element that is currently selected in attributeSelector1.
+     * @param selected the element that is now selected, as a String.
+     */
     public void setSearchAttribute(String selected) {
         selectedSearchAttribute = selected;
     }
 
+    /**
+     * Receives an input which changes the element that is currently selected in attributeSelector2.
+     * @param selected the element that is now selected, as a String.
+     */
     public void setOrderingAttribute(String selected) {
         selectedOrderingAttribute = selected;
     }
 
+    /**
+     * Receives an input that represents data that is to be searched for inside the currently selected table, inside the currently selected column.
+     * @param input the String to be used for matching.
+     */
     public void setSearchString(String input) {
         searchString = input;
     }
 
     /**
+     * Receives an input that changes whether the result set should be ordered as ascending or descending.
      * @param b sets DefaultButtonModels. Ascending as b and descending as !b
      */
     public void setOrdering(boolean b) {
@@ -157,6 +173,9 @@ public class FormPanelServicer {
         descending.setPressed(!b);
     }
 
+    /**
+     * Receives an input that indicates a query should be performed. This method refers to instance variables to decide how the query should be composed. 
+     */
     public void requestQuery() {
         String selectClause = "SELECT *";
         String fromClause;
@@ -191,19 +210,31 @@ public class FormPanelServicer {
         workerUtility.execute();
     }
 
+    /**
+     * Receives a SimpleListener that will receive a broadcast when the DefaultTableModel tableSelector finishes updating its contents.
+     */
     public void addTableComboBoxListener(SimpleListener l) {
         broadcaster1.addListener(l);
         initTableSelectorComboBox();
     }
 
+    /**
+     * Receives a SimpleListener that will receive a broadcast when the DefaultTableModel attributeSelector1 finishes updating its contents.
+     */
     public void addAttributeComboBoxListener1(SimpleListener l) {
         broadcaster2.addListener(l);
     }
 
+    /**
+     * Receives a SimpleListener that will receive a broadcast when the DefaultTableModel attributeSelector2 finishes updating its contents.
+     */
     public void addAttributeComboBoxListener2(SimpleListener l ) {
         broadcaster3.addListener(l);
     }
 
+    /**
+     * Connect to an output handling servicer.
+     */
     public void addOutputPanelServicer(OutputPanelServicer s) {
         outputPanelServicer = s;
     }

@@ -1,4 +1,4 @@
-package com.github.brandonxue.art_gallery_manager;
+package com.github.brandonxue.art_gallery_manager.util;
 
 import java.util.Vector;
 
@@ -102,7 +102,7 @@ public class MySQLUtility extends SwingWorker<CachedRowSet, Void> {
     public static Vector<String> metaDataToColumnVector(ResultSetMetaData metaData) throws SQLException {
         Vector<String> columnIdentifiers = new Vector<>();
 
-        int colCount = metaData.getColumnCount();
+        final int colCount = metaData.getColumnCount();
         for (int i = 1; i <= colCount; ++i)
             columnIdentifiers.add(metaData.getColumnLabel(i));
         
@@ -117,7 +117,7 @@ public class MySQLUtility extends SwingWorker<CachedRowSet, Void> {
     public static Vector<Vector<Object>> rowSetToDataVector(CachedRowSet rowSet) throws SQLException {
         Vector<Vector<Object>> dataVector = new Vector<>();
 
-        int colCount = rowSet.getMetaData().getColumnCount();
+        final int colCount = rowSet.getMetaData().getColumnCount();
         rowSet.beforeFirst();
         while (rowSet.next()) {
             Vector<Object> rowData = new Vector<>(); // Create a Vector for each row
