@@ -93,6 +93,7 @@ public class OutputPanelServicer {
                 // JTables use a single cell renderer for data of the same type, get the component uses as renderer
                 // For this table the default should likely be a JLabel
                 // https://docs.oracle.com/javase/tutorial/uiswing/components/table.html#editrender
+                // Also see: https://stackoverflow.com/questions/17627431/auto-resizing-the-jtable-column-widths
                 c = tableReference.prepareRenderer(renderer, row, col);
                 maxDataWidth = Math.max(c.getPreferredSize().width + 10, maxDataWidth); // Add 10 or it seems to cut off
             }
