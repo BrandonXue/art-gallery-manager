@@ -10,6 +10,6 @@ If you would like to test the project, feel free to download the jar file inside
 
 Some demo screenshots showing a form-based query and a custom query.
 
-<img src="/pages/FormPanelDemo.png" width=400> <img src = "/pages/CustomPanelDemo.png" width=400>
+<img src="/pages/FormPanelDemo.png" width=400/> <img src="/pages/CustomPanelDemo.png" width=400/>
 
 The JTable resizes to accomodate the search results, and stores the results and dimensions for all tabs.
